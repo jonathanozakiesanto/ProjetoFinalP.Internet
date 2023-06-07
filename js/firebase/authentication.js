@@ -75,6 +75,7 @@ function loginFirebase(email, senha) {
  * Realiza a autenticação do usuário utilizando a conta Google do mesmo.
  * @return {object} O usuário logado
  */
+
 function loginGoogle() {
   //Não esqueça de adicionar também o endereço 127.0.0.1 em Authentication/Settings no Firebase para poder rodar localmente
 
