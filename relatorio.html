@@ -1,0 +1,107 @@
+<!--/**
+ * Copyright 2023 Prof. Ms. Ricardo Leme All Rights Reserved.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */-->
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Bootstrap 5 CSS-->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="images/fatecitu.png">
+  <link rel="stylesheet" href="css/estilo.css">
+  <title>Menu Inicial</title>
+</head>
+
+<body onload="verificaLogado();obtemDados('eventos')">
+  <nav class="navbar navbar-dark bg-dark navbar-expand-lg">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">AEEC Itu</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="menu.html"><i class="bi bi-house"></i> Início</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="eventos.html"><i class="bi bi-person-vcard"></i> Eventos Esportivos</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="relatorio.html"><i class="bi bi-journal-check"></i> Relatórios</a>
+          </li>
+        </ul>
+      </div>
+      <div class="text-right">
+        <ul class="navbar-nav ms-auto flex-nowrap">
+
+          <div id="imagemUsuario"></div>
+          <li class="nav-item">
+            <button class="btn  btn-block bg-light" onclick="logoutFirebase()"><i class="bi bi-box-arrow-in-right"></i>
+              Logout</button>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <div class="container-fluid p-1 text-darker text-center">
+    <h2>Controle de Cadastro de Eventos Esportivos</h1>
+
+  </div>
+  <div id="mensagemAlerta"></div>
+  <button class="btn btn-primary" onclick="gerarRelatorioPDF('eventos','relatorioEventos')">Gerar Relatório em PDF</button><br>
+  <div class="container-fluid" id="relatorioEventos">    
+    <div class="row">
+      <div class="col-md-12">
+        <img src="images/fatecitu.png" alt="Logo Fatec Itu" width="100" class="img-fluid float-start m-3">
+        <h3 class="laranja-escuro">Relatório de Eventos Esportivos</h3>
+        </div>
+        <hr>
+        <div class="col-md-12">
+        <button class="btn fundo-laranja-escuro" type="button" disabled id="carregandoDados">
+          <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+          Carregando os dados...
+        </button>
+        <div class="table-responsive">
+        
+          <table id="tabelaDados" class="table table-sm table-striped table-bordered mt-3">
+            <!-- Conteúdo dos dados do Firebase será inserido aqui -->
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Carregando os scripts do Firebase -->
+  <script src="https://www.gstatic.com/firebasejs/9.6.7/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.6.7/firebase-database-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.6.7/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.6.7/firebase-storage-compat.js"></script>
+  <!-- Carregamento dos scripts do projeto-->
+  <script src="js/firebase/firebase.js"></script>
+  <script src="js/firebase/authentication.js"></script>
+  <script src="js/firebase/dados.js"></script>
+  <script src="js/util/alerta.js"></script>
+  <!-- Carregando a bibllioteca de relatório -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+  <script src="js/util/relatorio.js"></script> 
+
+
+</body>
+
+</html>
